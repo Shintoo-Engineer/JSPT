@@ -154,9 +154,9 @@ export const Cinematic3DHero: React.FC<Cinematic3DHeroProps> = ({ intensity = 1 
     // 3. Volumetric Heavenly Light Rays (Subtle Cones)
     const raysGroup = new THREE.Group();
     const rayMaterial = new THREE.MeshBasicMaterial({
-      color: 0xF59E0B,
+      color: 0xBFE8FF,
       transparent: true,
-      opacity: 0.08,
+      opacity: 0.055,
       side: THREE.DoubleSide,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
@@ -176,7 +176,7 @@ export const Cinematic3DHero: React.FC<Cinematic3DHeroProps> = ({ intensity = 1 
     const ambientLight = new THREE.AmbientLight(0x0f172a, 1.5);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0xFBBF24, 3 * intensity, 35);
+    const pointLight = new THREE.PointLight(0xFFF7D6, 2.5 * intensity, 35);
     pointLight.position.set(0, 2, 2);
     scene.add(pointLight);
 
