@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Volume2, VolumeX, Sparkles, ArrowRight } from 'lucide-react';
 import { JsptLogo } from './JsptLogo';
-import { ambientAudio } from '../utils/audioSynth';
 import { Language } from '../types';
 
 interface IntroCinematicProps {
