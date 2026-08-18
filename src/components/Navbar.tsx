@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Globe, Volume2, VolumeX, HeartHandshake, PhoneCall, Youtube, Calendar } from 'lucide-react';
 import { JsptLogo } from './JsptLogo';
 import { Language } from '../types';
-import { ambientAudio } from '../utils/audioSynth';
 import { WHATSAPP_LINK } from '../data/content';
 
 interface NavbarProps {
