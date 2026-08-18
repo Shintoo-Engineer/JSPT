@@ -64,7 +64,7 @@ export const Cinematic3DHero: React.FC<Cinematic3DHeroProps> = ({ intensity = 1 
     container.appendChild(renderer.domElement);
 
     // 1. Floating Celestial Particles (Gold & Silver Stardust)
-    const particleCount = reducedMotion ? 60 : (window.innerWidth < 768 ? 100 : 300);
+    const particleCount = reducedMotion ? 40 : (window.innerWidth < 768 ? 70 : 180);
     const particleGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
