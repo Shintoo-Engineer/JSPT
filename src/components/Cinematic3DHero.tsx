@@ -64,7 +64,7 @@ export const Cinematic3DHero: React.FC<Cinematic3DHeroProps> = ({ intensity = 1 
     container.appendChild(renderer.domElement);
 
     // 1. Floating Celestial Particles (Gold & Silver Stardust)
-    const particleCount = reducedMotion ? 120 : (window.innerWidth < 768 ? 250 : 600);
+    const particleCount = reducedMotion ? 60 : (window.innerWidth < 768 ? 100 : 300);
     const particleGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
@@ -117,12 +117,12 @@ export const Cinematic3DHero: React.FC<Cinematic3DHeroProps> = ({ intensity = 1 
     const crossGroup = new THREE.Group();
 
     const crossMaterial = new THREE.MeshStandardMaterial({
-      color: 0xFDE68A,
-      emissive: 0xD97706,
-      emissiveIntensity: 0.45,
-      metalness: 0.8,
-      roughness: 0.25,
-    });
+      color: 0xFFD700,
+      emissive: 0xF59E0B,
+      emissiveIntensity: 0.55,
+      metalness: 0.85,
+      roughness: 0.2,
+     });
 
     // Vertical Beam
     const verticalGeo = new THREE.BoxGeometry(0.5, 7.5, 0.4);
