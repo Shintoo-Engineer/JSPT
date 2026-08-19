@@ -171,7 +171,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, onOpenPray
                 </div>
                 <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between">
                   <span className="font-semibold text-slate-300">🔥 {lang === 'ta' ? 'வெள்ளி உபவாச ஜெபம்' : 'Friday Fasting Prayer'}</span>
-                  <span className="font-mono text-amber-300 font-bold">10:00 AM – 9:00 PM</span>
+                  <span className="font-mono text-amber-300 font-bold">10:00 AM – 1:00 PM</span>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between">
                   <span className="font-semibold text-slate-300">🌱 {lang === 'ta' ? 'சனி சிறுவர்கள் அபிஷேகம்' : 'Saturday Kids Anointing'}</span>
