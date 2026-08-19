@@ -144,7 +144,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang, onOpenPrayerModa
           </span>
           <span className="text-slate-600">•</span>
           <span className="text-slate-300">
-            🔥 {lang === 'ta' ? 'வெள்ளி உபவாசம்: 10 AM - 9 PM' : 'Fri Fasting: 10 AM - 9 PM'}
+            🔥 {lang === 'ta' ? 'வெள்ளி உபவாசம்: 10 AM - 1 PM' : 'Fri Fasting: 10 AM - 1 PM'}
           </span>
           <span className="text-slate-600">•</span>
           <span className="text-slate-300">
