@@ -1,4 +1,3 @@
-// Peaceful worship music player
 class AmbientAudioEngine {
   private audio: HTMLAudioElement | null = null;
   private isPlaying = false;
@@ -8,14 +7,20 @@ class AmbientAudioEngine {
       this.audio = new Audio('/audio/peaceful-worship.mp3');
       this.audio.loop = true;
       this.audio.volume = 0.25;
-
-      this.audio.addEventListener('ended', () => {
-        this.isPlaying = false;
-      });
     }
   }
 
-  public async start() {
+  public toggle(): boolean {
+    if (this.isPlaying) {
+      this.stop();
+      return false;
+    }
+
+    this.start();
+    return true;
+  }
+
+  public async start(): Promise<void> {
     try {
       this.initAudio();
 
@@ -24,12 +29,11 @@ class AmbientAudioEngine {
       await this.audio.play();
       this.isPlaying = true;
     } catch (error) {
-      console.log('Music requires user interaction.');
-      this.isPlaying = false;
+      console.error('Unable to play worship music:', error);
     }
   }
 
-  public stop() {
+  public stop(): void {
     if (this.audio) {
       this.audio.pause();
       this.audio.currentTime = 0;
@@ -38,19 +42,7 @@ class AmbientAudioEngine {
     this.isPlaying = false;
   }
 
-  public async toggle(): Promise<boolean> {
-    if (this.isPlaying) {
-      this.stop();
-      return false;
-    }
-
-    await this.start();
-    return this.isPlaying;
-  }
-
-  public setVolume(vol: number) {
-    this.initAudio();
-
+  public setVolume(vol: number): void {
     if (this.audio) {
       this.audio.volume = Math.max(0, Math.min(1, vol));
     }

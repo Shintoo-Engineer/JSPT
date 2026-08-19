@@ -41,11 +41,8 @@ export const IntroCinematic: React.FC<IntroCinematicProps> = ({ onComplete, lang
     setAudioEnabled(isPlaying);
   };
 
-  const handleEnter = async () => {
-    if (!audioEnabled) {
-      await ambientAudio.start();
-      setAudioEnabled(true);
-    }
+  const handleEnter = () => {
+    console.log('ENTER SANCTUARY clicked');
     onComplete();
   };
 
