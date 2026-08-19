@@ -27,8 +27,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleToggleSound = () => {
-    const active = ambientAudio.toggle();
+  const handleToggleSound = async () => {
+    const active = await ambientAudio.toggle();
     setIsPlayingAudio(active);
   };
 

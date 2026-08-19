@@ -36,15 +36,15 @@ export const IntroCinematic: React.FC<IntroCinematicProps> = ({ onComplete, lang
     };
   }, []);
 
-  const handleToggleAudio = () => {
-    const isPlaying = ambientAudio.toggle();
+  const handleToggleAudio = async () => {
+    const isPlaying = await ambientAudio.toggle();
     setAudioEnabled(isPlaying);
   };
 
-  const handleEnter = () => {
+  const handleEnter = async () => {
     if (!audioEnabled) {
-      // Gentle start on user gesture if desired
-      ambientAudio.start();
+      await ambientAudio.start();
+      setAudioEnabled(true);
     }
     onComplete();
   };
