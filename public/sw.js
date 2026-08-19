@@ -1,4 +1,5 @@
-const CACHE_NAME = 'jspt-static-v1';
+const CACHE_NAME = 'jspt-static-v2';
+
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -22,54 +23,90 @@ const STATIC_ASSETS = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(STATIC_ASSETS);
-    }).then(() => self.skipWaiting())
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(STATIC_ASSETS))
+      .then(() => self.skipWaiting())
   );
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
+    caches.keys()
+      .then((keys) =>
+        Promise.all(
+          keys.map((key) => {
+            if (key !== CACHE_NAME) {
+              return caches.delete(key);
+            }
+          })
+        )
+      )
+      .then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
-  // Only handle GET requests for local assets
   if (event.request.method !== 'GET') return;
+
   const url = new URL(event.request.url);
 
-  // Do not try to cache third party streaming or messaging (YouTube, WhatsApp)
+  // Don't interfere with external websites/services
   if (url.origin !== self.location.origin) return;
 
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).then((networkResponse) => {
-        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+  // IMPORTANT:
+  // Always try the network first for HTML/navigation.
+  // This prevents an old website version from being displayed.
+  if (event.request.mode === 'navigate' ||
+      event.request.destination === 'document') {
+
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          // Update cached page with latest version
+          const responseClone = networkResponse.clone();
+
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseClone);
+          });
+
           return networkResponse;
-        }
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
-        return networkResponse;
-      }).catch(() => {
-        // Fallback to cached index for navigation requests
-        if (event.request.mode === 'navigate') {
+        })
+        .catch(() => {
+          // Offline fallback
           return caches.match('/index.html');
+        })
+    );
+
+    return;
+  }
+
+  // For other assets, use cache first and network fallback.
+  event.respondWith(
+    caches.match(event.request)
+      .then((cachedResponse) => {
+        if (cachedResponse) {
+          return cachedResponse;
         }
-      });
-    })
+
+        return fetch(event.request)
+          .then((networkResponse) => {
+
+            if (
+              !networkResponse ||
+              networkResponse.status !== 200 ||
+              networkResponse.type !== 'basic'
+            ) {
+              return networkResponse;
+            }
+
+            const responseClone = networkResponse.clone();
+
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseClone);
+            });
+
+            return networkResponse;
+          });
+      })
   );
 });
