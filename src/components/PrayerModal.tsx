@@ -165,7 +165,7 @@ export const PrayerModal: React.FC<PrayerModalProps> = ({
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="e.g. +91 94899 19343"
+                    placeholder="e.g. +91 9487875798"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -210,7 +210,7 @@ export const PrayerModal: React.FC<PrayerModalProps> = ({
                     className="w-3.5 h-3.5 rounded text-amber-500"
                   />
                   <label htmlFor="modal-wa-check">
-                    {lang === 'ta' ? 'வாட்ஸ்அப் மூலமும் அனுப்ப (9489919343)' : 'Send to Pastor’s WhatsApp Line'}
+                    {lang === 'ta' ? 'வாட்ஸ்அப் மூலமும் அனுப்ப (9487875798)' : 'Send to Pastor’s WhatsApp Line'}
                   </label>
                 </div>
 

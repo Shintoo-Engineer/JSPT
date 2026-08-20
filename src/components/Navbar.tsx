@@ -107,11 +107,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            title="WhatsApp Prayer Line: 9489919343"
+            title="WhatsApp Prayer Line: 9487875798"
             className="hidden xl:flex items-center gap-1 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/25 text-xs font-semibold transition-colors"
           >
             <PhoneCall size={13} />
-            <span>9489919343</span>
+            <span>9487875798</span>
           </a>
 
           {/* Prayer Request CTA */}
@@ -189,7 +189,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-emerald-600/20 border border-emerald-500/40 text-emerald-300 font-semibold text-xs text-center"
             >
               <PhoneCall size={14} />
-              <span>WhatsApp Prayer: 9489919343</span>
+              <span>WhatsApp Prayer: 9487875798</span>
             </a>
           </div>
         </div>

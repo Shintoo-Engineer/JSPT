@@ -45,7 +45,7 @@ export const WordOfGodSection: React.FC<WordOfGodSectionProps> = ({ lang }) => {
       />
 
       {/* Gentle Rotating Golden Ray */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none opacity-30 animate-divine-ray">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 pointer-events-none opacity-30 animate-spin [animation-duration:30s]">
         <div
           className="w-full h-full"
           style={{
@@ -80,8 +80,8 @@ export const WordOfGodSection: React.FC<WordOfGodSectionProps> = ({ lang }) => {
         </div>
 
         {/* Section Heading */}
-        <h2 className="text-3xl sm:text-4xl font-black font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-white to-amber-300 mb-10 tracking-wider">
-          {lang === 'ta' ? 'தேவனுடைய வார்த்தை' : 'THE WORD OF GOD'}
+        <h2 className="text-3xl sm:text-4xl font-black font-cinzel text-transparent bg-clip-text bg-linear-to-r from-amber-200 via-white to-amber-300 mb-10 tracking-wider">
+          {lang === 'ta' ? 'ஜீவனுள்ள தேவ வார்த்தை' : 'The Living Word of God'}
         </h2>
 
         {/* Scripture Card Display */}
@@ -122,7 +122,7 @@ export const WordOfGodSection: React.FC<WordOfGodSectionProps> = ({ lang }) => {
                 <cite className="not-italic text-sm sm:text-base font-bold font-cinzel text-sky-300 tracking-widest uppercase">
                   — {lang === 'ta' ? verse.referenceTa : verse.referenceEn}
                 </cite>
-                <span className="text-[11px] text-slate-400 mt-1">Holy Bible • King James Version</span>
+                <span className="text-[11px] text-slate-400 mt-1">Holy Bible </span>
               </div>
             </motion.div>
           </AnimatePresence>

@@ -210,7 +210,7 @@ export const MessagesSection: React.FC<MessagesSectionProps> = ({ lang }) => {
                       {lang === 'ta' ? selectedVideo.titleTa : selectedVideo.titleEn}
                     </h3>
                     <p className="text-xs text-amber-400 mt-0.5">
-                      Pr. V. Arul Dhas • Jesus Saves Prayer Team
+                      Pr. V. Arul Dhas • Jesus Saves Chruch
                     </p>
                   </div>
 

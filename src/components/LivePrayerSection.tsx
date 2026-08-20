@@ -18,56 +18,95 @@ export const LivePrayerSection: React.FC<LivePrayerSectionProps> = ({ lang }) =>
 
   const [reminderSet, setReminderSet] = useState<string | null>(null);
 
-  // Compute countdown to next scheduled meeting (Friday 10am, Saturday 5pm, Sunday 10am)
-  useEffect(() => {
-    const calculateTime = () => {
-      const now = new Date();
-      // Target next upcoming service:
-      // Sunday (day 0) 10:00 AM, Friday (day 5) 10:00 AM, Saturday (day 6) 17:00
-      const currentDay = now.getDay();
-      const currentHour = now.getHours();
+  // Compute countdown to the next church prayer gathering
+useEffect(() => {
+  const calculateTime = () => {
+    const now = new Date();
+    const currentDay = now.getDay(); // Sunday = 0, Friday = 5
+    const currentHour = now.getHours();
 
-      let target = new Date();
+    let target = new Date(now);
 
-      if (currentDay === 5 && currentHour < 21) {
-        // Friday is today
-        target.setHours(10, 0, 0, 0);
-        if (now > target) {
-          // Live now until 9 PM!
-          target.setHours(21, 0, 0, 0);
-        }
-      } else if (currentDay < 5) {
-        // Next is Friday
-        const diffDays = 5 - currentDay;
-        target.setDate(now.getDate() + diffDays);
-        target.setHours(10, 0, 0, 0);
-      } else if (currentDay === 5) {
-        // Next is Saturday Kids
-        target.setDate(now.getDate() + 1);
-        target.setHours(17, 0, 0, 0);
-      } else if (currentDay === 6 && currentHour < 18) {
-        // Saturday Kids today
-        target.setHours(17, 0, 0, 0);
-      } else {
-        // Next is Sunday
-        const diffDays = (7 - currentDay) % 7;
-        target.setDate(now.getDate() + diffDays);
+    // Friday Fasting Prayer: 10 AM - 9 PM
+    // Friday Fasting Prayer: 10 AM - 1 PM
+   if (currentDay === 5) {
+     const fridayStart = new Date(now);
+     fridayStart.setHours(10, 0, 0, 0);
+
+     const fridayEnd = new Date(now);
+     fridayEnd.setHours(13, 0, 0, 0);
+
+    // Currently during Friday fasting prayer
+    if (now >= fridayStart && now < fridayEnd) {
+       target = fridayEnd;
+    }
+
+    // Before Friday 10 AM
+    else if (now < fridayStart) {
+      target = fridayStart;
+    }
+
+    // Friday after 1 PM → next Sunday
+    else {
+     target.setDate(now.getDate() + 2);
+     target.setHours(10, 0, 0, 0);
+    }
+  }
+
+    // Sunday Worship: 10 AM - 1 PM
+    else if (currentDay === 0) {
+      const sundayStart = new Date(now);
+      sundayStart.setHours(10, 0, 0, 0);
+
+      const sundayEnd = new Date(now);
+      sundayEnd.setHours(13, 0, 0, 0);
+
+      // Currently during Sunday worship
+      if (now >= sundayStart && now < sundayEnd) {
+        target = sundayEnd;
+      }
+      // Before Sunday 10 AM
+      else if (now < sundayStart) {
+        target = sundayStart;
+      }
+      // Sunday after 1 PM → next Friday
+      else {
+        const daysUntilFriday = 5;
+        target.setDate(now.getDate() + daysUntilFriday);
         target.setHours(10, 0, 0, 0);
       }
+    }
 
-      const diff = Math.max(0, target.getTime() - now.getTime());
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / 1000 / 60) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
+    // Monday - Thursday → next Friday
+    else if (currentDay >= 1 && currentDay <= 4) {
+      const daysUntilFriday = 5 - currentDay;
+      target.setDate(now.getDate() + daysUntilFriday);
+      target.setHours(10, 0, 0, 0);
+    }
 
-      setTimeLeft({ days, hours, minutes, seconds });
-    };
+    // Saturday → next Sunday
+    else if (currentDay === 6) {
+      target.setDate(now.getDate() + 1);
+      target.setHours(10, 0, 0, 0);
+    }
 
-    calculateTime();
-    const timer = setInterval(calculateTime, 1000);
-    return () => clearInterval(timer);
-  }, []);
+
+    const diff = Math.max(0, target.getTime() - now.getTime());
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    setTimeLeft({ days, hours, minutes, seconds });
+  };
+
+  calculateTime();
+
+  const timer = setInterval(calculateTime, 1000);
+
+  return () => clearInterval(timer);
+}, []);
 
   const handleSetReminder = (serviceId: string) => {
     setReminderSet(serviceId);
@@ -104,7 +143,7 @@ export const LivePrayerSection: React.FC<LivePrayerSectionProps> = ({ lang }) =>
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
             </span>
-            <span>🔴 {lang === 'ta' ? 'நேரலை ஜெபக்கூடுகை' : 'LIVE PRAYER'}</span>
+            <span>🔴 {lang === 'ta' ? 'ஜெப ஆராதனை' : 'PRAYER GATHERING'}</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black font-cinzel tracking-wider text-white mb-3">
@@ -113,8 +152,8 @@ export const LivePrayerSection: React.FC<LivePrayerSectionProps> = ({ lang }) =>
 
           <p className="text-slate-400 text-sm sm:text-base max-w-xl mb-8">
             {lang === 'ta'
-              ? 'அடுத்த நேரலை ஜெப ஆராதனை தொடங்குவதற்கான நேரம்:'
-              : 'Countdown to the Next Scheduled Miracle Prayer Gathering:'}
+              ? 'அடுத்த ஜெப ஆராதனைக்கான நேரம்:'
+              : 'Countdown to the Next Prayer Gathering:'}
           </p>
 
           {/* Countdown Clock Display */}
@@ -155,6 +194,15 @@ export const LivePrayerSection: React.FC<LivePrayerSectionProps> = ({ lang }) =>
               </span>
             </div>
           </div>
+          <div className="flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-slate-950/80 border border-slate-800 text-slate-300 text-xs sm:text-sm mb-8 backdrop-blur-md">
+           <Church className="w-4 h-4 text-amber-400 shrink-0" />
+   
+           <span>
+            {lang === 'ta'
+              ? 'கரை கொடுமுட்டி, பெத்லேபுரம், கன்னியாகுமரி மாவட்டம், தமிழ்நாடு'
+              : 'Karai Kodumutty, Bethelpuram, Kanyakumari District, Tamil Nadu'}
+            </span>
+         </div>
 
           {/* Action Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -166,7 +214,7 @@ export const LivePrayerSection: React.FC<LivePrayerSectionProps> = ({ lang }) =>
               className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm tracking-wider font-cinzel shadow-[0_0_25px_rgba(220,38,38,0.5)] transition-all transform hover:scale-105"
             >
               <Play size={16} className="fill-white" />
-              <span>▶ {lang === 'ta' ? 'நேரலையில் இணைவீர்' : 'JOIN LIVE STREAM'}</span>
+              <span>▶ {lang === 'ta' ? 'நேரலை / செய்திகள் பார்க்க' : 'WATCH LIVE / MESSAGES'}</span>
             </a>
 
             <a
@@ -195,7 +243,7 @@ export const LivePrayerSection: React.FC<LivePrayerSectionProps> = ({ lang }) =>
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {SERVICE_SCHEDULE.map((service) => (
               <motion.div
                 key={service.id}

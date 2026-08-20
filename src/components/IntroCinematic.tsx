@@ -174,7 +174,7 @@ export const IntroCinematic: React.FC<IntroCinematicProps> = ({ onComplete, lang
               transition={{ delay: 0.8 }}
               className="mt-4 text-xs md:text-sm tracking-[0.35em] text-slate-300 font-semibold uppercase font-cinzel"
             >
-              Jesus Saves Prayer Team
+              Jesus Saves Chruch
             </motion.p>
           </motion.div>
         )}
@@ -240,7 +240,7 @@ export const IntroCinematic: React.FC<IntroCinematicProps> = ({ onComplete, lang
 
       {/* Footnote */}
       <div className="absolute bottom-6 text-center text-xs text-slate-400 tracking-widest font-cinzel">
-        JESUS SAVES PRAYER TEAM MINISTRY • FOUNDER PR. V. ARUL DHAS
+        JESUS SAVES Chruch • PR. V. ARUL DHAS
       </div>
     </motion.div>
   );

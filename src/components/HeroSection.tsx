@@ -40,14 +40,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang, onOpenPrayerModa
     <section
       id="hero"
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden bg-[#03060F]"
+      className="relative isolate min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden bg-[#03060F]"
     >
       {/* 3D WebGL Three.js Particle & Luminous Cross Canvas */}
       <Cinematic3DHero />
 
       {/* Local Background Church Cinematic Image with Parallax & Slow Zoom */}
       <motion.div
-        className="absolute inset-0 bg-cover bg-center pointer-events-none opacity-40 mix-blend-screen scale-105"
+        className="absolute inset-0 z-[1] bg-cover bg-center pointer-events-none opacity-40 mix-blend-screen scale-105"
         style={{
           backgroundImage: `radial-gradient(circle at center, rgba(3,6,15,0.2) 0%, rgba(3,6,15,0.85) 70%, rgba(2,4,10,0.98) 100%), url('/images/hero-church.webp')`,
           x: mousePos.x * 20,
@@ -113,7 +113,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang, onOpenPrayerModa
           transition={{ duration: 0.8, delay: 1.0 }}
           className="text-2xl sm:text-3xl md:text-4xl font-bold font-tamil text-amber-300 mt-2 tracking-wide drop-shadow-[0_0_20px_rgba(251,191,36,0.4)]"
         >
-          “இயேசு விரைவில் வருகிறார்”
+          “கர்த்தருடைய வருகை சமீபமாயிருக்கிறது”
         </motion.p>
 
         {/* Secondary Catchphrase: “GET READY TO MEET OUR LORD JESUS CHRIST” */}
@@ -140,15 +140,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang, onOpenPrayerModa
             {lang === 'ta' ? 'வாராந்திர ஆராதனைகள்:' : 'Weekly Services:'}
           </span>
           <span className="text-slate-300">
-            ☀️ {lang === 'ta' ? 'ஞாயிறு: 10 AM - 1 PM' : 'Sun: 10 AM - 1 PM'}
+            🔥 {lang === 'ta' ? 'ஞாயிறு: 10 AM - 1 PM' : 'Sun: 10 AM - 1 PM'}
           </span>
           <span className="text-slate-600">•</span>
           <span className="text-slate-300">
             🔥 {lang === 'ta' ? 'வெள்ளி உபவாசம்: 10 AM - 1 PM' : 'Fri Fasting: 10 AM - 1 PM'}
-          </span>
-          <span className="text-slate-600">•</span>
-          <span className="text-slate-300">
-            🌱 {lang === 'ta' ? 'சனி சிறுவர்கள்: 5 PM - 6 PM' : 'Sat Kids: 5 PM - 6 PM'}
           </span>
         </motion.div>
 

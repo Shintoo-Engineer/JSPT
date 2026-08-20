@@ -133,7 +133,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, onOpenPray
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-bold font-cinzel text-white">
-                Jesus Saves Prayer Team Church
+                Jesus Saves Church
               </h3>
 
               {/* Text Location as requested */}
@@ -143,7 +143,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, onOpenPray
                   <span>{lang === 'ta' ? 'இடம் / முகவரி' : 'Place'}</span>
                 </div>
                 <p className="text-lg sm:text-xl font-black font-cinzel text-amber-200">
-                  place : kanyakumari Dist , TamilNadu, India
+                  place : Karai, kodumutty, bethelpuram, kanyakumari Dist , TamilNadu, India.
                 </p>
                 <p className="text-xs text-slate-300">
                   {MINISTRY_LOCATION_TA}
@@ -173,10 +173,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, onOpenPray
                   <span className="font-semibold text-slate-300">🔥 {lang === 'ta' ? 'வெள்ளி உபவாச ஜெபம்' : 'Friday Fasting Prayer'}</span>
                   <span className="font-mono text-amber-300 font-bold">10:00 AM – 1:00 PM</span>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between">
-                  <span className="font-semibold text-slate-300">🌱 {lang === 'ta' ? 'சனி சிறுவர்கள் அபிஷேகம்' : 'Saturday Kids Anointing'}</span>
-                  <span className="font-mono text-amber-300 font-bold">5:00 PM – 6:00 PM</span>
-                </div>
               </div>
 
               <div className="pt-2 text-center text-xs text-slate-400 italic">
@@ -197,7 +193,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, onOpenPray
           <div className="text-center md:text-center text-slate-400">
             <div>“JESUS IS COMING SOON” • இயேசு விரைவில் வருகிறார்</div>
             <div className="mt-1 text-[11px] text-slate-400">
-              © {new Date().getFullYear()} Jesus Saves Prayer Team. Founder Pr. V. Arul Dhas. All Glory to God.
+              © {new Date().getFullYear()} Jesus Saves Chruch. Pr. V. Arul Dhas. All Glory to God.
             </div>
           </div>
 

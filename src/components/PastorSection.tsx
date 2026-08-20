@@ -60,12 +60,12 @@ export const PastorSection: React.FC<PastorSectionProps> = ({ lang, onOpenPrayer
               {/* Main Image Frame */}
               <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/80 shadow-2xl">
                 {/* Pastor Portrait Image */}
-                <div className="relative h-[440px] sm:h-[480px] w-full overflow-hidden bg-slate-950">
+                <div className="relative aspect-[2/3] w-full overflow-hidden bg-slate-950">
                   <img
                     src="/images/pastor.png"
-                    alt="Pr. V. Arul Dhas - Jesus Saves Prayer Team"
+                    alt="Pr. V. Arul Dhas - Jesus Saves Chruch"
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover object-top filter contrast-105 group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-contain object-center filter contrast-105 group-hover:scale-105 transition-transform duration-700"
                   />
                   {/* Subtle Gradient Overlay at bottom */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050914] via-[#050914]/40 to-transparent" />
@@ -73,7 +73,7 @@ export const PastorSection: React.FC<PastorSectionProps> = ({ lang, onOpenPrayer
                   {/* Ministry Preaching Badge */}
                   <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-950/80 border border-amber-500/50 text-amber-300 text-xs font-semibold backdrop-blur-md">
                     <Flame size={14} className="text-amber-400" />
-                    <span>Founder & Anointed Minister</span>
+                    <span>Anointed Minister</span>
                   </div>
 
                   {/* Name banner overlay on image */}
@@ -82,7 +82,7 @@ export const PastorSection: React.FC<PastorSectionProps> = ({ lang, onOpenPrayer
                       PR. V. ARUL DHAS
                     </h3>
                     <p className="text-xs text-amber-400 font-semibold uppercase tracking-wider">
-                      Founder & Chief Minister • JSPT
+                      Chief Minister • Jesus Saves Chruch
                     </p>
                   </div>
                 </div>
@@ -112,7 +112,7 @@ export const PastorSection: React.FC<PastorSectionProps> = ({ lang, onOpenPrayer
               <p className="text-base sm:text-lg text-amber-400 font-semibold font-cinzel mt-1">
                 {lang === 'ta'
                   ? 'நிறுவனர் & ஊழியர் — இயேசு இரட்சிக்கிறார் ஜெபக்குழு (JSPT)'
-                  : 'Founder & Minister — Jesus Saves Prayer Team'}
+                  : 'Minister — Jesus Saves Chruch'}
               </p>
             </div>
 

@@ -4,10 +4,10 @@ export { YOUTUBE_VIDEOS } from './messages';
 export { SERVICE_SCHEDULE } from './events';
 
 export const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/channel/UCMQuGFO6ZQfLlioRkW6X3bg';
-export const WHATSAPP_NUMBER = '9489919343';
-export const WHATSAPP_LINK = 'https://wa.me/919489919343';
+export const WHATSAPP_NUMBER = '9487875798';
+export const WHATSAPP_LINK = 'https://wa.me/919487875798';
 export const EMAIL_ADDRESS = 'jesussavesprayerteam@gmail.com';
-export const MINISTRY_LOCATION_EN = 'Kanyakumari Dist, TamilNadu, India';
+export const MINISTRY_LOCATION_EN = 'Karai, kodumutty, bethelpuram, Kanyakumari Dist, TamilNadu, India.';
 export const MINISTRY_LOCATION_TA = 'கன்னியாகுமரி மாவட்டம், தமிழ்நாடு, இந்தியா';
 
 export const INITIAL_PRAYER_WALL: PrayerWallItem[] = [

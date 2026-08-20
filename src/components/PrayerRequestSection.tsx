@@ -123,7 +123,7 @@ export const PrayerRequestSection: React.FC<PrayerRequestSectionProps> = ({
           <p className="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
             {lang === 'ta'
               ? 'போதகர் வி. அருள் தாஸ் மற்றும் ஜெபக்குழுவினர் உங்களுக்காக தேவ சமுகத்தில் கண்ணீரோடு பரிந்துபேசி ஜெபிப்பார்கள்.'
-              : 'Pr. V. Arul Dhas and the dedicated Jesus Saves Prayer Team will bring your name and request before the Throne of Grace.'}
+              : 'Pr. V. Arul Dhas and the dedicated Jesus Saves Chruch will bring your name and request before the Throne of Grace.'}
           </p>
         </div>
 
@@ -191,7 +191,7 @@ export const PrayerRequestSection: React.FC<PrayerRequestSectionProps> = ({
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="e.g. +91 94899 19343"
+                      placeholder="e.g. +91 9487875798"
                       className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-500 transition-colors"
                     />
                   </div>
@@ -247,8 +247,8 @@ export const PrayerRequestSection: React.FC<PrayerRequestSectionProps> = ({
                   />
                   <label htmlFor="prayer-whatsapp-direct-checkbox" className="cursor-pointer">
                     {lang === 'ta'
-                      ? 'வாட்ஸ்அப் மூலமும் போதகரின் ஜெபக்குழுவுக்கு அனுப்பவும் (WhatsApp: 9489919343)'
-                      : 'Also send directly to Pastor’s WhatsApp Prayer Line (+91 9489919343)'}
+                      ? 'வாட்ஸ்அப் மூலமும் போதகரின் ஜெபக்குழுவுக்கு அனுப்பவும் (WhatsApp: 9487875798)'
+                      : 'Also send directly to Pastor’s WhatsApp Prayer Line (+91 9487875798)'}
                   </label>
                 </div>
 

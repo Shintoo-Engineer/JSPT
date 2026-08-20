@@ -120,7 +120,7 @@ export const JsptLogo: React.FC<JsptLogoProps> = ({
         </span>
         {showSubtitle && (
           <span className={`font-medium tracking-[0.25em] text-slate-300 uppercase ${currentSize.subClass} mt-1`}>
-            SAVES PRAYER TEAM
+            JESUS SAVES CHRUCH
           </span>
         )}
       </div>
