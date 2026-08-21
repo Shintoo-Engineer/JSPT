@@ -76,7 +76,7 @@ function createSvgAsset(filename, title, subtitle, themeColor = '#D97706', accen
 
 // Generate the primary visual assets
 createSvgAsset(path.join(imagesDir, 'hero-church.webp'), 'JESUS SAVES PRAYER TEAM', '“JESUS IS COMING SOON”', '#D97706', '#FBBF24');
-createSvgAsset(path.join(imagesDir, 'pastor.webp'), 'PR. V. ARUL DHAS', 'Founder & Minister • Jesus Saves Prayer Team', '#0284C7', '#38BDF8');
+createSvgAsset(path.join(imagesDir, 'pastor.webp'), 'PR. V. ARUL DHAS', 'Minister • Jesus Saves Chruch', '#0284C7', '#38BDF8');
 createSvgAsset(path.join(imagesDir, 'family.webp'), 'A MINISTRY OF PRAYER', 'Dedicated Family in God’s Service', '#059669', '#34D399');
 createSvgAsset(path.join(imagesDir, 'church.webp'), 'PRAYER SANCTUARY', 'Jesus Saves Prayer Team Church', '#D97706', '#FBBF24');
 createSvgAsset(path.join(imagesDir, 'bible.webp'), 'THE LIVING WORD OF GOD', 'End-Time Prophetic Scripture', '#3B82F6', '#93C5FD');
