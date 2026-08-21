@@ -35,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks = [
     { id: 'hero', href: '#hero', en: 'Home', ta: 'முகப்பு' },
     { id: 'warning', href: '#warning', en: 'End-Time Warning', ta: 'எச்சரிப்பு செய்தி' },
-    { id: 'pastor', href: '#pastor', en: 'Founder', ta: 'போதகர்' },
+    { id: 'pastor', href: '#pastor', en: 'Pastor', ta: 'போதகர்' },
     { id: 'ministry', href: '#ministry', en: 'Ministry', ta: 'ஊழியம்' },
     { id: 'prayer-request', href: '#prayer-request', en: 'Need Prayer?', ta: 'ஜெபம் தேவையா?' },
     { id: 'prayer-wall', href: '#prayer-wall', en: 'Prayer Wall', ta: 'ஜெப சுவர்' },
