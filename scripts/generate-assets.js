@@ -37,7 +37,7 @@ function createSvgAsset(filename, title, subtitle, themeColor = '#D97706', accen
     </filter>
   </defs>
   
-  <!-- Canvas Background -->
+  <!-- Canvas Background --> 
   <rect width="1200" height="800" fill="url(#bgGrad)"/>
   
   <!-- Subtle Divine Aura -->
